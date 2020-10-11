@@ -17,10 +17,10 @@ impl std::fmt::Debug for Computer {
             .field("CPU Model", &self.cpu_model)
             .field("Memory Vender", &self.memory_vender);
 
-        // No need to call finish, as we need to add one more customized debug info
+        // No need to call `.finish()`, as we need to add one more customized debug info
         let _ = f.write_fmt(format_args!("    Memory Size: {} GB", self.memory_size_in_gb));
 
-        // Add the missing `}`, as we don't call `debug_struct().finished()`
+        // Add the missing `}`, as we didn't call `f.debug_struct().finish()` above
         f.write_str("\n}\n")
     }
 }
